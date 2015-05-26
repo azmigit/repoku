@@ -1,0 +1,89 @@
+<div class="header-content">
+	<i class="fa fa-user-plus"></i><span>Registrasi</span>			
+</div>
+
+<div class="utama">
+	<form action="" name="regis" method="post">
+		<table>
+			<tr>
+				<td>Nama Lengkap :</td>
+				<td><input type="text" size=28 name="nama_lengkap" required/></td>
+			</tr>
+			<tr>
+				<td valign="top">Alamat :</td>
+				<td><textarea name="" id="alamat" cols="22" rows="10" required></textarea></td>
+			</tr>
+			<tr>
+				<td>Jenis Kelamin :</td>
+				<td><input type="radio" name="jk1" value="L"/> L <input type="radio" name="jk2" value="P" /> P </td>
+			</tr>
+			<tr>
+				<td>Email :</td>
+				<td><input type="email" size=28 name="email" required/></td>
+			</tr>
+			<tr>
+				<td>Password :</td>
+				<td><input type="password" size=28 name="password" autocomplete="off" required/></td>
+			</tr>
+			<tr>
+				<td>Ulang password :</td>
+				<td><input type="password" size=28 name="u_password" onkeyup="cek()" required autocomplete="off"/><span class="err" style="color: red;float: right;left: 370px;margin-top: -23px;position: absolute;"></span></td>
+			</tr>
+			<tr>
+				<td colspan=2 align="left">
+					<input type="submit" onclick="return register()" value="Register" class="btn-regis"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<script type="text/javascript">
+	function cek(){
+		var pass = document.regis.password.value;
+		var upass = document.regis.u_password.value;
+		
+		if(upass != pass){
+			$('.err').html('Password tidak sama !!');
+		}else{
+			$('.err').html('');
+		}
+	}
+
+	function register(){
+		var nama = document.regis.nama_lengkap.value;
+		var almt = document.getElementById('alamat').value;
+		var email = document.regis.email.value;
+		var pass = document.regis.password.value;
+		var upass = document.regis.u_password.value;
+		var x;
+		
+		
+		if(document.regis.jk1.checked){
+			x=document.regis.jk1.value;
+		}else{
+			x=document.regis.jk2.value;
+		}
+		
+		
+		if(nama == ''){
+			alert('Nama Anda masih kosong !!');
+			return false;
+		}else if(almt == ''){
+			alert('Alamat Anda masih kosong !!');
+			return false;
+		}else if(email == ''){
+			alert('Email Anda masih kosong !!');
+			return false;
+		}else if(pass == ''){
+			alert('Password Anda masih kosong !!');
+			return false;
+		}else if(upass == ''){
+			alert('Ulangi Password Anda masih kosong !!');
+			return false;
+		}else{
+			alert(' Nama : '+ nama +'\n Alamat :'+ almt +'\n Jenis Kelamin : '+ x +'\n Email : '+ email + '\n \n Terimakasih anda sudah mendaftar :D');
+		}
+		return true;
+	}
+</script>
